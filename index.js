@@ -65,6 +65,12 @@ app.get('/omdb/searchcomplete', async(req,res) =>
     let aux = await OMDBSearchComplete(texto);
     res.status(200).send(aux)
 })
+app.get('/omdb/getbyomdbid', async(req,res) => 
+{
+    let texto = req.query.imdbID;
+    let aux = await OMDBGetByImdbID(texto);
+    res.status(200).send(aux)
+})
 
 const alumnosArray = [];
 alumnosArray.push(new Alumno("Esteban Dido" , "22888444", 20));
