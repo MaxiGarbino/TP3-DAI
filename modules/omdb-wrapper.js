@@ -24,7 +24,7 @@ const OMDBSearchByPage = async (searchText, page = 1) => {
 
 const OMDBSearchComplete = async (searchText) => {
     try {
-        const requestString = `https://www.omdbapi.com/?apikey=${APIKEY}&s=${searchText}`;
+        const requestString = `http://www.omdbapi.com/?apikey=${APIKEY}&s=${searchText}`;
         const response = await axios.get(requestString);
         return {
             datos: response.data.Search,
@@ -43,7 +43,7 @@ const OMDBSearchComplete = async (searchText) => {
 
 const OMDBGetByImdbID = async (imdbID) => {
     try {
-        const requestString = `https://www.omdbapi.com/?apikey=${APIKEY}&i=${imdbID}`;
+        const requestString = `http://www.omdbapi.com/?apikey=${APIKEY}&i=${imdbID}`;
         const response = await axios.get(requestString);
         return {
             datos: [response.data],
