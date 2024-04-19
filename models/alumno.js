@@ -2,7 +2,7 @@ class Alumno{
     constructor(username = "-",DNI = "000",edad = "000"){
         this.username = username;
         this.dni = DNI;
-        this.edad = DNI;
+        this.edad = edad;
     }
 
     toString(){

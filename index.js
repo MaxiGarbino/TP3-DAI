@@ -72,8 +72,38 @@ alumnosArray.push(new Alumno("Matias Queroso", "28946255", 51));
 alumnosArray.push(new Alumno("Elba Calao" , "32623391", 18));
 
 app.get('/alumnos', async(req,res) =>{
-    res.status200.send()
+    res.status(200).send(alumnosArray)
 })
+
+app.get('/alumnos/:dni', async(req, res) =>
+{
+    let dni = req.query.dni;
+    let alum = alumnosArray.find((element) => element.DNI == dni);
+    res.status(200).send(alum);
+})
+app.post('/alumnos',async(req,res)=>{
+    let nombre = req.query.nombre;
+    let dni = req.query.dni;
+    let edad = parseInt(req.query.edad);
+    alumnosArray.push(new Alumno("Monica Gaduro","11222333",25));
+    res.status(201).send("created");
+})
+
+app.delete('/alumnos',async(req,res)=>
+{
+    let dni = req.query.dni;
+    let alumn = alumnosArray.findIndex((element) => element.DNI == dni);
+    console.log(alumn)
+    if(alumn != -1)
+    {
+        alumnosArray.splice([alumn],1);
+        res.status(200).send("OK");
+    }
+    else{
+        res.status(404).send("No OK");
+    }
+})
+
 app.listen(port, () => {
 console.log(`Example app listening on port http://localhost:${port}`)
 })
