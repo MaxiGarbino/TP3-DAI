@@ -57,13 +57,23 @@ app.get('/omdb/searchbypage', async(req,res) =>
     let texto = req.query.search;
     let pagina = parseInt(req.query.p) ;
     let aux = await OMDBSearchByPage(texto,pagina);
-    res.send(aux)
+    res.status(200).send(aux)
 })
-app.listen(port, () => {
-console.log(`Example app listening on port http://localhost:${port}`)
+app.get('/omdb/searchcomplete', async(req,res) => 
+{
+    let texto = req.query.search;
+    let aux = await OMDBSearchComplete(texto);
+    res.status(200).send(aux)
 })
 
 const alumnosArray = [];
 alumnosArray.push(new Alumno("Esteban Dido" , "22888444", 20));
 alumnosArray.push(new Alumno("Matias Queroso", "28946255", 51));
 alumnosArray.push(new Alumno("Elba Calao" , "32623391", 18));
+
+app.get('/alumnos', async(req,res) =>{
+    res.status200.send()
+})
+app.listen(port, () => {
+console.log(`Example app listening on port http://localhost:${port}`)
+})
